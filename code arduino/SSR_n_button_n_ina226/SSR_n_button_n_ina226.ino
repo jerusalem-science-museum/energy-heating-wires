@@ -38,10 +38,11 @@ bool first_press = true;
 bool first_led_on = true;
 const int BOUNCE_TIME = 50;
 const bool MANUAL = true;
+bool first_session = true;
 //////// SSR ///////
 long timer_ssr_on = 0;
 long timer_ssr_off = 0;
-const long SSR_ON = 5000;
+const uint32_t SSR_ON = 60000;
 const long SSR_OFF = 10000;
 
 
@@ -49,7 +50,7 @@ const long SSR_OFF = 10000;
 const int ERROR_CURRENT_DELAY = 2000;
 const float R_SHUNT_OHMS = 0.00215f;    // ex: 2 mΩ
 const float I_RANGE_A    = 20.0f;      // ex: tu veux mesurer jusqu’à ~10 A
-const float CURRENT_SYSTEM = 2;
+const float CURRENT_SYSTEM = 2.5;
 int current_flag;
 float current;
 
@@ -150,22 +151,12 @@ void loop() {
 
   
 
-  if(millis() - timer_ssr_off > SSR_OFF){
+  if(millis() - timer_ssr_off > SSR_OFF || first_session){
 
     if(first_led_on){
       digitalWrite(LED_BUTTON_IO,HIGH);
       first_led_on = false;
       Serial.println("Led ON");
-    }
-
-    if(buttonPressed && first_press){
-      Serial.println("first press");
-      Serial.println("SSR ON");
-      digitalWrite(LED_BUTTON_IO,LOW);
-      delay(10);
-      digitalWrite(SSR,HIGH);
-      first_press = LOW;
-      timer_ssr_on = millis();
     }
 
     current_flag = current_valid();//check and print current
@@ -181,7 +172,24 @@ void loop() {
       if(current_flag == 1){
         Serial.println("reset session because over current");
       }     
-  }
+    }
+
+    if(buttonPressed && first_press){
+      first_session = false;
+      Serial.println("first press");
+      Serial.println("SSR ON");
+
+      digitalWrite(LED_BUTTON_IO,LOW);
+      delay(10);
+      digitalWrite(SSR,HIGH);
+      delay(1000);
+      Serial.println("\nCurrent : " + String(ina226.getCurrent_A()) + "A");
+      Serial.println("Voltage : " + String(ina226.getBusVoltage_V()) + "V\n");
+      first_press = LOW;
+      timer_ssr_on = millis();
+    }
+
+    
 
     if(millis() - timer_ssr_on > SSR_ON && first_press == false){
       reset_session();
