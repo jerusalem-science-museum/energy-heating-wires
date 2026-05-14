@@ -10,10 +10,10 @@
  *                       RST-|       |-RST
  *                       GND-|       |-+5V  
  *             BUTTON_IO  D2-|       |-A7  
- *                        D3-|       |-A6  
- *         LED_BUTTON_IO  D4-|       |-A5   
- *                        D5-|       |-A4   
- *                        D6-|       |-A3   
+ *                        D3-|       |-A6    
+ *         LED_BUTTON_IO  D4-|       |-A5    SCL
+ *                        D5-|       |-A4    SDA
+ *                        D6-|       |-A3    Vc
  *                        D7-|       |-A2   
  *                        D8-|       |-A1   
  *                        D9-|       |-A0   

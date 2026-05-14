@@ -1,7 +1,8 @@
-#include "Fonction.h"
+#include "Function.h"
 #include "Const.h"
 
 void setup() {
+  //Serial.begin(SERIAL_BAUD_RATE);
   Init_Output(BCD_A);
   Init_Output(BCD_B);
   Init_Output(BCD_C);
@@ -15,11 +16,10 @@ void setup() {
 }
 
 void loop() {
-  Vout = (float) analogRead(VOLTMETER_PIN);
+   Vout = (float) analogRead(VOLTMETER_PIN);
   //Serial.println("Vout: " + String(Vout));
-
   //analog_to_voltmeter();calcul the voltage between 0 to Vref
-  voltmeter();calcul the voltage between 0 to VINMAX
+  voltmeter();//calcul the voltage between 0 to VINMAX
   NUMBER_TO_DISPLAY(Vin);//display the numner to the 7seg
   //Serial.println("Vin: " + String(Vin/10));
   delay(100);

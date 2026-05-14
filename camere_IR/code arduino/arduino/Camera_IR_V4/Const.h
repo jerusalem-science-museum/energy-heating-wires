@@ -79,8 +79,8 @@ const int SUB_CLASS_0x7C[4] = {0x02,0x03,0x0C,0x04};//0x02 Calibration image ,0x
 #define SAVE_BUTTON          10
 #define PLUS_BUTTON          8
 #define MINUS_BUTTON         9
-#define RX_SER               -1
-#define TX_SER               7
+#define RX_SER               12
+#define TX_SER               11
 #define RESET_BUTTON         A0
 #define CALIBRATION_BUTTON   A1
 
@@ -166,7 +166,7 @@ CameraSetting Contrast_setting   = {CONTRAST_SW,   0x78, 0x03, 0, 100, 50, true,
 CameraSetting Brightness_setting = {BRIGHTNESS_SW, 0x78, 0x02, 0, 100, 50, true, "BRIGHTNESS"};
 CameraSetting Zoom_setting       = {ZOOM_SW,       0x70, 0x12, 0,   4,  0, true, "ZOOM"};
 */
-CameraSetting Setting_OPTION[OPTION_NUM] = {{COLOR_SW,      0x78, 0x20, 0,  15,  0, true, "COLOR"},
+CameraSetting Setting_OPTION[OPTION_NUM] = {{COLOR_SW,      0x78, 0x20, 0,  15,  5, true, "COLOR"},
                                             {ZOOM_SW,       0x70, 0x12, 0,   4,  0, true, "ZOOM"},
                                             {CONTRAST_SW,   0x78, 0x03, 0, 100, 50, true, "CONTRAST"},
                                             {BRIGHTNESS_SW, 0x78, 0x02, 0, 100, 50, true, "BRIGHTNESS"}

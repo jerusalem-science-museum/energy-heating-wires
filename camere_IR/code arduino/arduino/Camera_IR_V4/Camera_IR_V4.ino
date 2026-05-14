@@ -1,5 +1,6 @@
 #include "Fonction.h"
 #include "Const.h"
+#include <avr/wdt.h>
 
 void setup() {
   Serial.begin(SERIAL_BAUDRATE);
@@ -40,7 +41,8 @@ void setup() {
   // === Switch to write mode ===
   r_w_flag = 0x00;
   camSerial.write("Init complete\n");
-  wdt.enable(WDTO_4S);
+  //wdt.enable(WDTO_4S);
+  wdt_enable(WDTO_4S);
 }
 
 void loop() {

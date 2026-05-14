@@ -14,7 +14,7 @@
 
 
 //#define VOLTMETER_PIN A1
-#define VOLTMETER_PIN A3
+#define VOLTMETER_PIN A1
 /*
 /*
 *==========Arduino Nano pinout====== 
@@ -30,7 +30,7 @@
  *           BCD D  D6-|       |-A3  voltmeter after wire
  *    LE_CENTURIES  D7-|       |-A2  
  *       LE_DOZENS  D8-|       |-A1  voltmeter 24V
- *        LE_UNITS  D9-|       |-A0
+ *        LE_UNITS  D9-|       |-A0 
  *                 D10-|       |-Ref
  *                 D11-|       |-3.3V   
  *                 D12-|       |-D13
@@ -45,14 +45,14 @@ const int8_t  Number_OF_7SEG = 3;
 const int8_t RIGHT_DIGIT = 1;
 const int8_t MIDDLE_DIGIT = 2;
 const int8_t LEFT_DIGIT = 3;
-const int UNIT_CALIBRATION = 10;
+const float UNIT_CALIBRATION = 11;
 int Digit_3_To_Display = 0;// Left (100th) digit to disply - used as 10th
 int Digit_2_To_Display = 0;// Mid right (10th) digit to disply  - used as units 
 int Digit_1_To_Display = 0;// rigth (external unit) digit to disply - not used for winf tunnel
 ///////////////////////////////////////////////
 
 
-const float Vref = 4.2;
+const float Vref = 5;
 const float BIT_RESOLUTION = 1023;
 const float VIN_MAX = 24;
 float Vin;

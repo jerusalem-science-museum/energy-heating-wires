@@ -1,5 +1,5 @@
-#ifndef FONCTION
-#define FONCTION
+#ifndef FUNCTION
+#define FUNCTION
 
 
 #include "Const.h"
